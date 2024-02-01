@@ -2,8 +2,31 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+  //   C1     //
+  //=============================================================================//
+  //                                   DONE                                      //
+  // TODO: Add code to display the current date in the header of the page.       //
+  //=============================================================================//
+  
+  //    C3    //
+  //=============================================================================//
+  //                                   DONE                                      //
+  // TODO: Add code to apply the past, present, or future class to each time     //
+  // block by comparing the id to the current hour. HINTS: How can the id        //
+  // attribute of each time-block be used to conditionally add or remove the     //
+  // past, present, and future classes? How can Day.js be used to get the        //
+  // current hour in 24-hour time?                                               //
+  //=============================================================================//
 
-  //    1    //
+  //    C5    //
+  //=============================================================================//
+  //                                   DONE                                      //
+  // TODO: Add code to get any user input that was saved in localStorage and set //
+  // the values of the corresponding textarea elements. HINT: How can the id     //
+  // attribute of each time-block be used to do this?                            //
+  //=============================================================================//
+  
+  //    C6    //
   //=============================================================================//
   //                                   DONE                                      //
   // TODO: Add a listener for click events on the save button. This code should  //
@@ -14,29 +37,6 @@
   // useful when saving the description in local storage?                        //
   //=============================================================================//
   
-  //    2    //
-  //=============================================================================//
-  //                                   DONE                                      //
-  // TODO: Add code to apply the past, present, or future class to each time     //
-  // block by comparing the id to the current hour. HINTS: How can the id        //
-  // attribute of each time-block be used to conditionally add or remove the     //
-  // past, present, and future classes? How can Day.js be used to get the        //
-  // current hour in 24-hour time?                                               //
-  //=============================================================================//
-
-  //    3    //
-  //=============================================================================//
-  //                                   DONE                                      //
-  // TODO: Add code to get any user input that was saved in localStorage and set //
-  // the values of the corresponding textarea elements. HINT: How can the id     //
-  // attribute of each time-block be used to do this?                            //
-  //=============================================================================//
-
-  //    4    //
-  //=============================================================================//
-  //                               In-Progress                                   //
-  // TODO: Add code to display the current date in the header of the page.       //
-  //=============================================================================// 
 
 
   //=============================================================================//
@@ -50,8 +50,11 @@ $(function () { // this function ensures that the code won't run until browser i
   var eventText;
   var currentHour;
 
-   //    2    //
-   function updateColors() { // color blocking function 
+  //    C1    //
+  $("#currentDay").text(dayjs().format("dddd, MMMM D")); // display current date
+
+  //    C3    //
+  function updateColors() { // color blocking function 
 
     currentHour = dayjs().hour(); // setting this variable to hold the value of the current hour
 
@@ -62,24 +65,24 @@ $(function () { // this function ensures that the code won't run until browser i
       blockHour = parseInt($(this).attr('id').split('-')[1]); // extracting the # from the id attribute 'hour-#' and converting it to a numeric format
       
       // testing 
-      if (blockHour < 12) {
+      // if (blockHour < 12) {
 
-        console.log('this is the block hour ' + blockHour + ' AM');
+      //   console.log('this is the block hour ' + blockHour + ' AM');
 
-      } else {
-        if( blockHour === 12) {
+      // } else {
+      //   if( blockHour === 12) {
 
-          console.log('this is the block hour ' + blockHour + ' PM');
+      //     console.log('this is the block hour ' + blockHour + ' PM');
 
-        } else if (blockHour > 12) {
+      //   } else if (blockHour > 12) {
 
-          blockHour = blockHour - 12; 
+      //     blockHour = blockHour - 12; 
 
-          console.log('this is the block hour ' + blockHour + ' PM');
+      //     console.log('this is the block hour ' + blockHour + ' PM');
 
-        }
+      //   }
 
-      };
+      // };
       
       // I changed all the elements to only have future 
       // to make the code cleaner and easier
@@ -100,12 +103,16 @@ $(function () { // this function ensures that the code won't run until browser i
     });
   };
 
-  //    3    //
+  //    C6    //
   function loadEvents() { // retrieving data from local storage
 
     $(".time-block").each(function () { // for each element with the class time-block
 
+      blockHour = parseInt($(this).attr('id').split('-')[1]); 
+
       eventText = localStorage.getItem("event-" + blockHour); // retrieve the value in local storage assocaited with blockHour
+
+      console.log(eventText);
 
       // find the element within the time-block class 
       // with the class named `description` 
@@ -114,9 +121,9 @@ $(function () { // this function ensures that the code won't run until browser i
 
     });
 
-  }
+  };
 
-  //    1    //
+  //    C5    //
   // event handler to save user's input
   // grabbing the element with the class of saveBtn 
   $('.saveBtn').on('click', function () {
@@ -137,6 +144,7 @@ $(function () { // this function ensures that the code won't run until browser i
     localStorage.setItem('event-' + blockHour, eventText);
 
   });
+
 
   updateColors();
   loadEvents();
