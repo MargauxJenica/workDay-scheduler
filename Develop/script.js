@@ -26,7 +26,7 @@
 
   //    3    //
   //=============================================================================//
-  //                               In-Progress                                   //
+  //                                   DONE                                      //
   // TODO: Add code to get any user input that was saved in localStorage and set //
   // the values of the corresponding textarea elements. HINT: How can the id     //
   // attribute of each time-block be used to do this?                            //
@@ -34,7 +34,7 @@
 
   //    4    //
   //=============================================================================//
-  //                              Need to Start                                  //
+  //                               In-Progress                                   //
   // TODO: Add code to display the current date in the header of the page.       //
   //=============================================================================// 
 
@@ -101,11 +101,20 @@ $(function () { // this function ensures that the code won't run until browser i
   };
 
   //    3    //
-  function loadEvents(){
+  function loadEvents() { // retrieving data from local storage
 
+    $(".time-block").each(function () { // for each element with the class time-block
 
+      eventText = localStorage.getItem("event-" + blockHour); // retrieve the value in local storage assocaited with blockHour
 
-  };
+      // find the element within the time-block class 
+      // with the class named `description` 
+      // and set its value to the value stored in eventText
+      $(this).find(".description").val(eventText); 
+
+    });
+
+  }
 
   //    1    //
   // event handler to save user's input
