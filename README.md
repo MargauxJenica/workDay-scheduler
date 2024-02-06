@@ -13,8 +13,16 @@ For this project I refactored a scheduling webpage for employess to manage their
 
 Utilizing APIs broadens the range of applications developers can build. APIs play a crucial role for modern web applications as they facilitate communication, and improve readability and efficency. APIs provide a standardized way for developers to access the functionality or data of a service, library, or platform.  
 
-## Final Product
-![Color codded time block schedule webpage](./assets/images/)
+# Deployed Web Application
+### [Work Day Scheduler](https://margauxjenica.github.io/workDay-scheduler/)
 
+# Final Product
+## Color Blocked Schedule:
+![Color codded time block schedule webpage](./Assets/images/colorBlock.png)
 
-## [Work Day Scheduler Site](https://margauxjenica.github.io/workDay-scheduler/)
+## Saving Data to Local Storage:
+![Functional save button to local storage](./Assets/images/saveData.png)
+
+## Persistent Data:
+![Refreshed webpage with persistent data](./Assets/images/persistentData.png)
+
